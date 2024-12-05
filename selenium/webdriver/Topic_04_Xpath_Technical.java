@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 import java.time.Duration;
 
 
-public class Topic_05_Xpath_Technical {
+public class Topic_04_Xpath_Technical {
     WebDriver driver;
 
     @BeforeClass
