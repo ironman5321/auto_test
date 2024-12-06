@@ -111,8 +111,6 @@ public class Topic_05_WebBrowser_Commands {
         //Refesh lại trang
         driver.navigate().refresh();
 
-//Refesh lại trang
-        driver.navigate().refresh();
     }
 
 
