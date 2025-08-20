@@ -7,6 +7,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -26,15 +27,30 @@ public class Topic_12_Custom_Dropdown {
     }
 
     @Test
-    public void TC_01() throws InterruptedException {
+    public void TC_01_JQuery() throws InterruptedException {
         driver.get("https://jqueryui.com/resources/demos/selectmenu/default.html");
 
-        //Tìm Dr.
+        //Salutations
         selectItemInDropdown("span#salutation-button", "ul#salutation-menu div", "Dr.");
+        //Speed
+        selectItemInDropdown("span#speed-button ", "ul#speed-menu div", "Medium");
+        //verify xem đúng giá trị đã chọn chưa
+        Assert.assertEquals(driver.findElement(By.cssSelector("span#speed-button span.ui-selectmenu-text")).getText(), "Medium");
 
 
 
     }
+
+    @Test
+    public void TC_02_React_Sematic() throws InterruptedException {
+        driver.get("https://react.semantic-ui.com/maximize/dropdown-example-selection/");
+
+        selectItemInDropdown("div.dropdown", "div.item span.text", "Matt");
+        Assert.assertEquals(driver.findElement(By.cssSelector(".divider")).getText(), "Matt");
+
+
+    }
+
 
     private void selectItemInDropdown(String parentLocator, String childLocattor, String textItem) throws InterruptedException {
         driver.findElement(By.cssSelector(parentLocator)).click();
@@ -52,12 +68,7 @@ public class Topic_12_Custom_Dropdown {
         }
     }
 
-    @Test
-    public void TC_02() {
 
-
-
-    }
 
     @AfterClass
     public void afterClass() {
